@@ -1,6 +1,8 @@
 import { NavLink, Link } from "react-router-dom";
 
-import logo from "../../assets/icons/marvel-comics-logo.png";
+import logo from "../../assets/logo-black.png";
+import SearchPanel from "../searchPanel/SearchPanel";
+import "./Header.scss";
 
 const Header = () => {
   return (
@@ -14,12 +16,12 @@ const Header = () => {
           </div>
           <ul className="menu__list">
             <li className="menu__item">
-              <NavLink to="#" className="menu__link white">
+              <NavLink to="/" className="menu__link white">
                 home
               </NavLink>
             </li>
             <li className="menu__item">
-              <NavLink to="#" className="menu__link">
+              <NavLink to="/comics" className="menu__link">
                 comics
               </NavLink>
             </li>
@@ -31,14 +33,7 @@ const Header = () => {
           </ul>
         </nav>
         <div className="header__actions">
-          <div className="header__search">
-            <div className="header__search-wrapper">
-              <div className="header__search-field">
-                <input type="text" className="header__search-input" placeholder="search" />
-              </div>
-              <div className="header__search-btn"></div>
-            </div>
-          </div>
+          <SearchPanel />
           <div className="header__icons">
             <Link to="/favorites" className="header__icons-item">
               <span className="header__icon header__icon-favorites"></span>

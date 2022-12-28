@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .header {
   background-color: $white;
 
@@ -21,6 +23,7 @@
   .menu {
     display: flex;
     align-items: center;
+
     &__list {
       display: flex;
       align-items: center;
@@ -32,7 +35,6 @@
       align-items: center;
       height: 80px;
       font-weight: 700;
-      font-size: 14px;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: $secondary;
@@ -52,7 +54,6 @@
 
   &__icons {
     display: flex;
-    height: 100%;
 
     &-item {
       display: flex;

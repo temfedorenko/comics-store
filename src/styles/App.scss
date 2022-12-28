@@ -1,0 +1,13 @@
+@import "./variables.scss";
+@import "./reset.scss";
+@import "../components/header/Header.scss";
+
+body {
+  color: $white;
+  background-color: $background;
+}
+
+.App {
+  max-width: 1440px;
+  margin: 0 auto;
+}

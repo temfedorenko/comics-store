@@ -9,6 +9,12 @@ export const getComics = async (offset = 250) => {
     .then((res) => res.data.results.map(normalizeComics));
 };
 
+export const getOneComic = async (id = 100688) => {
+  return await fetch(`${BASE_URL}/${id}?${API_KEY}`)
+    .then((res) => res.json())
+    .then((res) => normalizeComics(res.data.results[0]));
+};
+
 const normalizeComics = (comic) => {
   return {
     id: comic.id,
@@ -20,5 +26,6 @@ const normalizeComics = (comic) => {
     price: comic.prices[0].price ? `$${comic.prices[0].price}` : "Not available",
     thumbnail: comic.thumbnail.path + "." + comic.thumbnail.extension,
     format: comic.format,
+    language: comic.textObjects.language || "en-us",
   };
 };

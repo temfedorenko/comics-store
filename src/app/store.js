@@ -1,8 +1,8 @@
-// import { configureStore } from '@reduxjs/toolkit';
-// import counterReducer from '../features/comics/comicsSlice';
+import { configureStore } from "@reduxjs/toolkit";
+import comicsReducer from "../features/comics/comicsSlice";
 
-// export const store = configureStore({
-//   reducer: {
-//     counter: counterReducer,
-//   },
-// });
+export const store = configureStore({
+  reducer: {
+    comics: comicsReducer,
+  },
+});

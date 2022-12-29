@@ -1,11 +1,15 @@
 @import "./variables.scss";
 @import "./reset.scss";
 @import "../components/header/Header.scss";
+@import "../features/comics/ComicsList.scss";
 
 body {
-  color: $white;
-  background-color: #e5e5e5;
+  font-family: "Montserrat", -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $primary-color;
   font-size: 14px;
+  background-color: #e5e5e5;
 }
 
 .App {

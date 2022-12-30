@@ -1,9 +1,74 @@
 @import "../../styles/variables.scss";
 
-.comic {
-  &__title {
-    margin-top: 16px;
-    font-weight: 700;
-    font-size: 32px;
+.selected-comic {
+  .comic {
+    &__title {
+      margin-top: 16px;
+      font-weight: 700;
+      font-size: 32px;
+    }
+
+    &__container {
+      margin-top: 40px;
+      display: flex;
+    }
+
+    &__image {
+      margin-right: 64px;
+      width: 464px;
+      height: 464px;
+      object-fit: contain;
+    }
+
+    &__info {
+      width: 320px;
+
+      &-price {
+        font-size: 32px;
+      }
+
+      &-features {
+        border: none;
+        padding-top: 32px;
+        margin: 0;
+        order: 3;
+      }
+
+      &-feature {
+        &-label {
+          color: $primary-color;
+        }
+      }
+
+      &-favorite-btn {
+        width: 48px;
+        height: 48px;
+      }
+
+      &-about {
+        margin-top: 50px;
+        max-width: 670px;
+
+        &-title {
+          padding-bottom: 16px;
+          font-weight: 700;
+          font-size: 22px;
+          border-bottom: 3px solid $icons-color;
+        }
+
+        &-descr {
+          margin-top: 32px;
+          max-height: 170px;
+          overflow-y: auto;
+          font-size: 16px;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+
+  .button {
+    width: 263px;
+    height: 48px;
   }
 }

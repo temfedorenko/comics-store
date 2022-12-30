@@ -13,11 +13,11 @@ const ComicsList = () => {
     dispatch(fetchComics());
   }, []);
 
-  const oneComic = comics.slice(10);
-
-  const renderedComics = oneComic.map((comic) => {
+  const renderedComics = comics.map((comic) => {
     return <ComicCard key={comic.id} {...comic} />;
   });
+
+  console.log(comics);
 
   return <ul className="comics__cards">{renderedComics}</ul>;
 };

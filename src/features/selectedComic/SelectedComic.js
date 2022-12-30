@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { selectedComicSelector, fetchOneComic } from "./selectedComicSlice";
 
 import "./SelectedComic.scss";
+import ComicInfo from "../comics/ComicInfo";
 
 const SelectedComic = () => {
   const { comicId } = useParams();
@@ -15,7 +16,21 @@ const SelectedComic = () => {
     dispatch(fetchOneComic(comicId));
   }, []);
 
-  return <h1 className="comic__title">Selected Comic: {selectedComic.title}</h1>;
+  return (
+    <section className="selected-comic comic">
+      <h1 className="comic__title">Selected Comic: {selectedComic.title}</h1>
+      <div className="comic__container">
+        <img className="comic__image" src={selectedComic.thumbnail} />
+        <div className="comic__info-wrapper">
+          <ComicInfo {...selectedComic} />
+          <div className="comic__info-about">
+            <h2 className="comic__info-about-title">About</h2>
+            <p className="comic__info-about-descr">{selectedComic.description}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default SelectedComic;

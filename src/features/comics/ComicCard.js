@@ -1,38 +1,28 @@
-import { ReactComponent as EmptyHeartIcon } from "../../assets/icons/favorites-empty.svg";
-import { ReactComponent as FillHeartIcon } from "../../assets/icons/favorites-fill.svg";
+import { Link } from "react-router-dom";
+
 import "./ComicCard.scss";
+import ComicInfo from "./ComicInfo";
 
-const ComicCard = ({ id, thumbnail, title, price, format, pageCount }) => {
+const ComicCard = ({ id, thumbnail, title, price, format, pageCount, language, year }) => {
   return (
-    <li className="comics__card">
-      <div className="comics__card-content">
-        <a href={`/comics/${id}`}>
+    <li className="comics__card comic">
+      <div className="comics__card-content ">
+        <Link to={`/comics/${id}`}>
           <img src={thumbnail} alt={title} className="comics__card-image" />
-        </a>
+        </Link>
 
-        <a href={`/comics/${id}`} className="comics__card-title">
+        <Link to={`/comics/${id}`} className="comics__card-title">
           {title}
-        </a>
+        </Link>
       </div>
 
-      <div className="comics__card-price">{price}</div>
-      <div className="comics__card-features">
-        <div className="comics__card-feature">
-          <span className="comics__card-feature-label">Format</span>
-          <span className="comics__card-feature-value">{format}</span>
-        </div>
-        <div className="comics__card-feature">
-          <span className="comics__card-feature-label">Pages</span>
-          <span className="comics__card-feature-value">{pageCount}</span>
-        </div>
-      </div>
-
-      <div className="comics__card-actions">
-        <button className="comics__card-button button add-button">Add to card</button>
-        <div className="comics__card-favorite-btn">
-          <EmptyHeartIcon />
-        </div>
-      </div>
+      <ComicInfo
+        price={price}
+        format={format}
+        pageCount={pageCount}
+        language={language}
+        year={year}
+      />
     </li>
   );
 };

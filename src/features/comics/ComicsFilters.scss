@@ -1,0 +1,16 @@
+@import "../../styles/variables.scss";
+
+.comics {
+  &__filters {
+    margin-top: 16px;
+    &-label {
+      font-size: 14px;
+      color: $secondary;
+      font-weight: 600;
+    }
+
+    &-btns {
+      margin-top: 8px;
+    }
+  }
+}

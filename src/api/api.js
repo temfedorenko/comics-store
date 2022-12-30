@@ -3,8 +3,8 @@ const API_KEY = "apikey=825a76f0069296d43a59fc01b51c7129";
 // extra apiKey
 // const API_KEY = "apikey=211c085f78942d7b553a3e154be3772e";
 
-export const getComics = async (offset = 11500) => {
-  return await fetch(`${BASE_URL}?offset=${offset}&${API_KEY}`)
+export const getComics = async (offset = 10005) => {
+  return await fetch(`${BASE_URL}?limit=91&offset=${offset}&${API_KEY}`)
     .then((res) => res.json())
     .then((res) => res.data.results.map(normalizeComics));
 };
@@ -21,10 +21,10 @@ const normalizeComics = (comic) => {
     title: comic.title,
     description: comic.description || "There is no more detailed description of this comic book",
     pageCount: comic.pageCount ? `${comic.pageCount} p.` : "—",
-    price: comic.prices[0].price ? `$${comic.prices[0].price}` : "Not available",
+    price: comic.prices[0].price ? comic.prices[0].price : 0,
     thumbnail: comic.thumbnail.path + "." + comic.thumbnail.extension,
     format: comic.format,
     language: comic.textObjects.language || "en-us",
-    year: comic.title.match(/\d{4}/) || "—",
+    year: comic.title.match(/\d{4}/) || "2023",
   };
 };

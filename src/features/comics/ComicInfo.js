@@ -6,7 +6,7 @@ import "./ComicInfo.scss";
 const ComicInfo = ({ price, format, pageCount, language, year }) => {
   return (
     <div className="comic__info">
-      <div className="comic__info-price">{price}</div>
+      <div className="comic__info-price">{price ? `$${price}` : `Not available`}</div>
       <div className="comic__info-features">
         <div className="comic__info-feature">
           <span className="comic__info-feature-label">Format</span>

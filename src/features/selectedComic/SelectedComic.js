@@ -18,7 +18,7 @@ const SelectedComic = () => {
 
   return (
     <section className="selected-comic comic">
-      <h1 className="comic__title">Selected Comic: {selectedComic.title}</h1>
+      <h1 className="comic__title">{selectedComic.title}</h1>
       <div className="comic__container">
         <img className="comic__image" src={selectedComic.thumbnail} />
         <div className="comic__info-wrapper">

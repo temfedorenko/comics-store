@@ -5,9 +5,12 @@ import { fetchComics, comicsSelector } from "./comicsSlice";
 import ComicCard from "./ComicCard";
 import "./ComicsList.scss";
 import ComicsFilters from "./ComicsFilters";
+import Spinner from "../../components/spinner/Spinner";
+import ErrorMessage from "../../components/errorMessage/ErrorMessage";
 
 const ComicsList = () => {
   const comics = useSelector(comicsSelector);
+  const status = useSelector((state) => state.comics.status);
   const dispatch = useDispatch();
 
   const [sortBy, setSortBy] = useState("");
@@ -52,29 +55,38 @@ const ComicsList = () => {
     return <ComicCard key={comic.id} {...comic} />;
   });
 
+  const errorMessage = status === "error" ? <ErrorMessage /> : null;
+  const spinner = status === "loading" && <Spinner />;
+
   return (
-    <section className="comics">
-      <h1 className="comics__title">Comics</h1>
-      <p className="comics__counter">{comics.length} items</p>
-      <div className="comics__sorting">
-        <label className="comics__sorting-label">
-          Sort by
-          <select
-            className="comics__sorting-select"
-            name="sortBy"
-            value={sortBy}
-            onChange={handleSortBySelect}>
-            <option value="rating">Rating</option>
-            <option value="price-low">Price (low-high)</option>
-            <option value="price-high">Price (high-low)</option>
-            <option value="date">Newest</option>
-            <option value="alphabetically">Alphabetically</option>
-          </select>
-        </label>
-      </div>
-      <ComicsFilters />
-      <ul className="comics__cards">{renderedComics}</ul>
-    </section>
+    <>
+      {errorMessage}
+      {spinner}
+      {status === "idle" && (
+        <section className="comics">
+          <h1 className="comics__title">Comics</h1>
+          <p className="comics__counter">{comics.length} items</p>
+          <div className="comics__sorting">
+            <label className="comics__sorting-label">
+              Sort by
+              <select
+                className="comics__sorting-select"
+                name="sortBy"
+                value={sortBy}
+                onChange={handleSortBySelect}>
+                <option value="rating">Rating</option>
+                <option value="price-low">Price (low-high)</option>
+                <option value="price-high">Price (high-low)</option>
+                <option value="date">Newest</option>
+                <option value="alphabetically">Alphabetically</option>
+              </select>
+            </label>
+          </div>
+          <ComicsFilters />
+          <ul className="comics__cards">{renderedComics}</ul>
+        </section>
+      )}
+    </>
   );
 };
 

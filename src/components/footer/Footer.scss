@@ -1,19 +1,17 @@
 @import "../../styles/variables";
 
-.header {
-  background-color: $white;
-
+.footer {
   &__wrapper {
-    padding-left: 20px;
+    padding: 0 100px;
+    height: 96px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0px 1px 0px #e2e6e9;
+    box-shadow: 0px -1px 0px $icons-color;
   }
 
   &__logo {
     width: 70px;
-    margin-right: 64px;
 
     img {
       width: 100%;
@@ -27,22 +25,19 @@
     &__list {
       display: flex;
       align-items: center;
-      gap: 54px;
+      gap: 64px;
     }
 
     &__link {
       display: flex;
       align-items: center;
-      height: 80px;
       font-weight: 700;
-      letter-spacing: 3px;
       text-transform: uppercase;
       color: $secondary;
       transition: color 0.4s ease-in-out;
 
       &:hover {
-        transform: translateY(2px);
-        border-bottom: 3px solid $primary-color;
+        color: $primary-color;
       }
     }
   }
@@ -82,9 +77,34 @@
     }
   }
 
-  .active-link {
-    transform: translateY(2px);
-    color: $primary-color;
-    border-bottom: 3px solid $primary-color;
+  &__to-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    &-label {
+      font-weight: 600;
+      color: $secondary;
+    }
+
+    &-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid $icons-color;
+      cursor: pointer;
+      transition: all 0.4s;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+      svg {
+        transform: rotate(180deg);
+        path {
+          fill: $primary-color;
+        }
+      }
+    }
   }
 }

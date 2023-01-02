@@ -11,6 +11,29 @@
 
     &-btns {
       margin-top: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    &-btn {
+      width: 120px;
+      height: 40px;
+      font-size: 14px;
+      background-color: transparent;
+      border: 1px solid $icons-color;
+      cursor: pointer;
+      transition: all 0.4s ease-in-out;
+
+      &:hover {
+        border-color: $primary-color;
+      }
+
+      &.active {
+        background-color: $icons-color;
+        color: $background;
+        transform: scale(0.95);
+      }
     }
   }
 }

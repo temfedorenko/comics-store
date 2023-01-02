@@ -3,8 +3,11 @@
 @import "../components/header/Header.scss";
 @import "../features/comics/ComicsList.scss";
 
-body {
+* {
   font-family: "Montserrat", -apple-system, sans-serif;
+}
+
+body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: $primary-color;
@@ -14,9 +17,13 @@ body {
 
 .App {
   max-width: 1440px;
+  min-height: 100vh;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .main {
-  padding: 0 100px;
+  padding: 0 100px 80px;
+  flex-grow: 1;
 }

@@ -4,7 +4,7 @@ import { fetchComics, comicsSelector } from "./comicsSlice";
 
 import ComicCard from "./ComicCard";
 import "./ComicsList.scss";
-import ComicsFilter from "./ComicsFilters";
+import ComicsFilters from "./ComicsFilters";
 
 const ComicsList = () => {
   const comics = useSelector(comicsSelector);
@@ -32,25 +32,15 @@ const ComicsList = () => {
       case "price-low":
         return comics
           .slice()
-          .sort(
-            (prevComic, nextComic) =>
-              Number.parseInt(prevComic.price) - Number.parseInt(nextComic.price)
-          );
+          .sort((prev, next) => Number.parseInt(prev.price) - Number.parseInt(next.price));
       case "price-high":
         return comics
           .slice()
-          .sort(
-            (prevComic, nextComic) =>
-              Number.parseInt(nextComic.price) - Number.parseInt(prevComic.price)
-          );
+          .sort((prev, next) => Number.parseInt(next.price) - Number.parseInt(prev.price));
       case "date":
-        return comics
-          .slice()
-          .sort((prevComic, nextComic) => Number(nextComic.year) - Number(prevComic.year));
+        return comics.slice().sort((prev, next) => Number(next.year) - Number(prev.year));
       case "alphabetically":
-        return comics
-          .slice()
-          .sort((prevComic, nextComic) => prevComic.title.localeCompare(nextComic.title));
+        return comics.slice().sort((prev, next) => prev.title.localeCompare(next.title));
       default:
         return comics;
     }
@@ -82,7 +72,7 @@ const ComicsList = () => {
           </select>
         </label>
       </div>
-      <ComicsFilter />
+      <ComicsFilters />
       <ul className="comics__cards">{renderedComics}</ul>
     </section>
   );

@@ -41,6 +41,11 @@ export const { filterChanged } = actions;
 
 export default reducer;
 
+export const filterSelector = createSelector(
+  (state) => state,
+  (state) => state.comics.filter
+);
+
 export const comicsSelector = createSelector(
   (state) => state.comics.comics,
   (state) => state.comics.filter,

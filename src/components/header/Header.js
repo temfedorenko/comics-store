@@ -16,17 +16,29 @@ const Header = () => {
           </div>
           <ul className="menu__list">
             <li className="menu__item">
-              <NavLink to="/" className="menu__link white">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  ["menu__link", isActive ? "menu__link active-link" : null].join(" ")
+                }>
                 home
               </NavLink>
             </li>
             <li className="menu__item">
-              <NavLink to="/comics" className="menu__link">
+              <NavLink
+                to="comics"
+                className={({ isActive }) =>
+                  ["menu__link", isActive ? "menu__link active-link" : null].join(" ")
+                }>
                 comics
               </NavLink>
             </li>
             <li className="menu__item">
-              <NavLink to="#" className="menu__link">
+              <NavLink
+                to="heroes"
+                className={({ isActive }) =>
+                  ["menu__link", isActive ? "menu__link active-link" : null].join(" ")
+                }>
                 heroes
               </NavLink>
             </li>

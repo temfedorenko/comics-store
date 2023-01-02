@@ -1,10 +1,14 @@
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 
 import logo from "../../assets/logo-black.png";
 import SearchPanel from "../searchPanel/SearchPanel";
 import "./Header.scss";
 
 const Header = () => {
+  // const location = useLocation();
+  // const path = location.pathname;
+
+  // const isSearchPanelVisible = path === "/comics";
   return (
     <header className="header">
       <div className="header__wrapper">
@@ -45,6 +49,7 @@ const Header = () => {
           </ul>
         </nav>
         <div className="header__actions">
+          {/* {isSearchPanelVisible && <SearchPanel />} */}
           <SearchPanel />
           <div className="header__icons">
             <Link to="/favorites" className="header__icons-item">

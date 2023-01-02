@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchComics, comicsSelector } from "./comicsSlice";
 
+import { fetchComics, comicsSelector } from "./comicsSlice";
 import ComicCard from "./ComicCard";
 import "./ComicsList.scss";
 import ComicsFilters from "./ComicsFilters";
 import Spinner from "../../components/spinner/Spinner";
 import ErrorMessage from "../../components/errorMessage/ErrorMessage";
+import ComicsSortingSelect from "./ComicsSortingSelect";
+import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
 
 const ComicsList = () => {
   const comics = useSelector(comicsSelector);
@@ -64,24 +66,10 @@ const ComicsList = () => {
       {spinner}
       {status === "idle" && (
         <section className="comics">
+          <Breadcrumbs firstPath={"Comics"} />
           <h1 className="comics__title">Comics</h1>
           <p className="comics__counter">{comics.length} items</p>
-          <div className="comics__sorting">
-            <label className="comics__sorting-label">
-              Sort by
-              <select
-                className="comics__sorting-select"
-                name="sortBy"
-                value={sortBy}
-                onChange={handleSortBySelect}>
-                <option value="rating">Rating</option>
-                <option value="price-low">Price (low-high)</option>
-                <option value="price-high">Price (high-low)</option>
-                <option value="date">Newest</option>
-                <option value="alphabetically">Alphabetically</option>
-              </select>
-            </label>
-          </div>
+          <ComicsSortingSelect filter={sortBy} onFilterSelect={handleSortBySelect} />
           <ComicsFilters />
           <ul className="comics__cards">{renderedComics}</ul>
         </section>

@@ -9,6 +9,7 @@ import "./SelectedComic.scss";
 import ComicInfo from "../comics/ComicInfo";
 import Spinner from "../../components/spinner/Spinner";
 import ErrorMessage from "../../components/errorMessage/ErrorMessage";
+import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
 
 const SelectedComic = () => {
   const { comicId } = useParams();
@@ -30,6 +31,8 @@ const SelectedComic = () => {
       {spinner}
       {status === "idle" && (
         <section className="selected-comic comic">
+          <Breadcrumbs firstPath={"Comics"} secondPath={selectedComic.title} />
+
           <Link to="/comics" className="comic__back">
             <ArrowIcon />
             <span>Back</span>

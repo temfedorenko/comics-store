@@ -5,10 +5,6 @@ import SearchPanel from "../searchPanel/SearchPanel";
 import "./Header.scss";
 
 const Header = () => {
-  // const location = useLocation();
-  // const path = location.pathname;
-
-  // const isSearchPanelVisible = path === "/comics";
   return (
     <header className="header">
       <div className="header__wrapper">

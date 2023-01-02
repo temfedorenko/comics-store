@@ -13,8 +13,7 @@ const SearchPanel = () => {
   };
 
   const location = useLocation();
-  const path = location.pathname;
-  const panelVisibility = path === "/comics" || path === "/heroes";
+  const panelVisibility = location.pathname === "/comics" || location.pathname === "/heroes";
 
   return (
     panelVisibility && (
@@ -22,7 +21,7 @@ const SearchPanel = () => {
         <input
           type="text"
           className="header__search-input"
-          placeholder={`Search in ${path.slice(1)}...`}
+          placeholder={`Search in ${location.pathname.slice(1)}...`}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />

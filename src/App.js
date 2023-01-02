@@ -9,6 +9,7 @@ import Footer from "./components/footer/Footer";
 import AboutPage from "./components/pages/AboutPage";
 import ContactsPage from "./components/pages/ContactsPage";
 import HeroesPage from "./components/pages/HeroesPage";
+import HomePage from "./components/pages/HomePage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Header />
         <main className="main">
           <Routes>
+            <Route path="/" element={<HomePage />} />
             <Route path="/comics">
               <Route index element={<ComicsList />} />
               <Route path=":comicId" element={<SelectedComic />} />

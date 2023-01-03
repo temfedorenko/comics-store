@@ -1,10 +1,14 @@
+import { useSelector } from "react-redux";
 import { NavLink, Link, useLocation } from "react-router-dom";
 
 import logo from "../../assets/logo-black.png";
+import { favoritesSelector } from "../../features/favorites/favoritesSlice";
 import SearchPanel from "../searchPanel/SearchPanel";
 import "./Header.scss";
 
 const Header = () => {
+  const favorites = useSelector(favoritesSelector);
+
   return (
     <header className="header">
       <div className="header__wrapper">
@@ -45,7 +49,6 @@ const Header = () => {
           </ul>
         </nav>
         <div className="header__actions">
-          {/* {isSearchPanelVisible && <SearchPanel />} */}
           <SearchPanel />
           <div className="header__icons">
             <Link to="/favorites" className="header__icons-item">

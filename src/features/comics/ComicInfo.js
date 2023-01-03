@@ -1,9 +1,22 @@
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToFavorites,
+  favoritesSelector,
+  removeFromFavorites,
+} from "../favorites/favoritesSlice";
+
 import { ReactComponent as EmptyHeartIcon } from "../../assets/icons/favorites-empty.svg";
 import { ReactComponent as FillHeartIcon } from "../../assets/icons/favorites-fill.svg";
 
 import "./ComicInfo.scss";
 
-const ComicInfo = ({ price, format, pageCount, language, year }) => {
+const ComicInfo = ({ comic }) => {
+  const { price, format, pageCount, language, year } = comic;
+  const dispatch = useDispatch();
+
+  const favorites = useSelector(favoritesSelector);
+  const isAdded = favorites.find((favComic) => favComic.id === comic.id);
+
   return (
     <div className="comic__info">
       <div className="comic__info-price">{price ? `$${price}` : `Not available`}</div>
@@ -28,9 +41,19 @@ const ComicInfo = ({ price, format, pageCount, language, year }) => {
 
       <div className="comic__info-actions">
         <button className="comic__info-button button add-button">Add to card</button>
-        <div className="comic__info-favorite-btn">
-          <EmptyHeartIcon />
-        </div>
+        {isAdded ? (
+          <button
+            className="comic__info-favorite-btn"
+            onClick={() => dispatch(removeFromFavorites(comic.id))}>
+            <FillHeartIcon />
+          </button>
+        ) : (
+          <button
+            className="comic__info-favorite-btn"
+            onClick={() => dispatch(addToFavorites(comic))}>
+            <EmptyHeartIcon />
+          </button>
+        )}
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
 import { ReactComponent as CleareIcon } from "../../assets/icons/close.svg";
 import "./SeacrhPanel.scss";
 import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const SearchPanel = () => {
   const [searchQuery, setSearchQuery] = useState("");

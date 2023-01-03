@@ -43,7 +43,7 @@ const SelectedComic = () => {
           <div className="comic__container">
             <img className="comic__image" src={selectedComic.thumbnail} />
             <div className="comic__info-wrapper">
-              <ComicInfo {...selectedComic} />
+              <ComicInfo comic={selectedComic} />
               <div className="comic__info-about">
                 <h2 className="comic__info-about-title">About</h2>
                 <p className="comic__info-about-descr">{selectedComic.description}</p>

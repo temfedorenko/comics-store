@@ -10,6 +10,7 @@ import AboutPage from "./components/pages/AboutPage";
 import ContactsPage from "./components/pages/ContactsPage";
 import HeroesPage from "./components/pages/HeroesPage";
 import HomePage from "./components/pages/HomePage";
+import SelectedComicPage from "./features/selectedComic/SelectedComicPage";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/comics">
               <Route index element={<ComicsList />} />
-              <Route path=":comicId" element={<SelectedComic />} />
+              <Route path=":comicId" element={<SelectedComicPage />} />
             </Route>
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contacts" element={<ContactsPage />} />

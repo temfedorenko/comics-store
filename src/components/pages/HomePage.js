@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { fetchComics } from "../../features/comics/comicsSlice";
 import BannerSlider from "../bannerSlider/BannerSlider";
-import NewComicsSlider from "../newComicsSlider/NewComicsSlider";
+import CardsSlider from "../cardsSlider/CardsSlider";
 
 const HomePage = () => {
   const comics = useSelector((state) => state.comics.comics);
@@ -22,7 +22,8 @@ const HomePage = () => {
   return (
     <>
       <BannerSlider />
-      <NewComicsSlider comics={newestComics} />
+      <CardsSlider type="new" title="New Comics" comics={newestComics} />
+      <CardsSlider type="hot" title="HOT Comics" comics={comics.slice(20, 32)} />
     </>
   );
 };

@@ -10,6 +10,8 @@ import ComicInfo from "../comics/ComicInfo";
 import Spinner from "../../components/spinner/Spinner";
 import ErrorMessage from "../../components/errorMessage/ErrorMessage";
 import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
+import CardsSlider from "../../components/cardsSlider/CardsSlider";
+import { comicsSelector } from "../comics/comicsSlice";
 
 const SelectedComic = () => {
   const { comicId } = useParams();

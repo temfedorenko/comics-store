@@ -1,0 +1,78 @@
+@import "../../styles/variables.scss";
+
+.cards-slider {
+  margin-top: 72px;
+  user-select: none;
+
+  &__wrapper {
+    margin-top: 28px;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  &__controllers {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hot-cards-slider__btn,
+  .rec-cards-slider__btn,
+  .new-cards-slider__btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $icons-color;
+    cursor: pointer;
+    transition: all 0.5s;
+
+    &:hover {
+      background-color: $background;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      path {
+        fill: $primary-color;
+      }
+    }
+
+    &-prev {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .cards-slider__btn_disabled {
+    border-color: $elements;
+    cursor: auto;
+
+    svg {
+      path {
+        fill: $secondary;
+      }
+    }
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  .comics__card {
+    min-height: 590px;
+  }
+}

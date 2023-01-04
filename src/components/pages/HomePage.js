@@ -21,9 +21,15 @@ const HomePage = () => {
   }, []);
   return (
     <>
-      <BannerSlider />
-      <CardsSlider type="new" title="New Comics" comics={newestComics} />
-      <CardsSlider type="hot" title="HOT Comics" comics={comics.slice(20, 32)} />
+      <section>
+        <BannerSlider />
+      </section>
+      <section>
+        <CardsSlider type="new" title="New Comics" comics={newestComics} />
+      </section>
+      <section>
+        <CardsSlider type="hot" title="HOT Comics" comics={comics.slice(20, 32)} />
+      </section>
     </>
   );
 };

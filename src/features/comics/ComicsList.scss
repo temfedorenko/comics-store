@@ -1,22 +1,10 @@
 @import "../../styles/variables.scss";
 
 .comics {
-  &__title {
-    margin-top: 40px;
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 41px;
-  }
-
-  &__counter {
-    margin-top: 8px;
-    color: $secondary;
-  }
-
   &__cards {
     margin-top: 24px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 290px);
+    grid-template-columns: repeat(auto-fit, 290px);
     justify-content: center;
     row-gap: 40px;
     column-gap: 16px;

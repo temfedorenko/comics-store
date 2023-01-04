@@ -54,7 +54,7 @@ const Header = () => {
             <Link to="/favorites" className="header__icons-item">
               <span className="header__icon header__icon-favorites"></span>
             </Link>
-            <Link to="/store" className="header__icons-item">
+            <Link to="/cart" className="header__icons-item">
               <span className="header__icon header__icon-store"></span>
             </Link>
           </div>

@@ -1,22 +1,19 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { selectedComicSelector, fetchOneComic } from "./selectedComicSlice";
-
-import { ReactComponent as ArrowIcon } from "../../assets/icons/arrow-down.svg";
 
 import "./SelectedComic.scss";
 import ComicInfo from "../comics/ComicInfo";
 import Spinner from "../../components/spinner/Spinner";
 import ErrorMessage from "../../components/errorMessage/ErrorMessage";
 import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
+import GoBackButton from "../../components/goBackButton/GoBackButton";
 
 const SelectedComic = () => {
   const { comicId } = useParams();
   const selectedComic = useSelector(selectedComicSelector);
   const status = useSelector((state) => state.selectedComic.status);
-
-  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -34,11 +31,7 @@ const SelectedComic = () => {
       {status === "idle" && (
         <section className="selected-comic comic">
           <Breadcrumbs firstPath={"Comics"} secondPath={selectedComic.title} />
-
-          <button className="comic__back" onClick={() => navigate(-1)}>
-            <ArrowIcon />
-            <span>Back</span>
-          </button>
+          <GoBackButton />
           <h1 className="comic__title">{selectedComic.title}</h1>
           <div className="comic__container">
             <img className="comic__image" src={selectedComic.thumbnail} />

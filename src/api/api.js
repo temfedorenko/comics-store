@@ -3,7 +3,7 @@ const API_KEY = "apikey=825a76f0069296d43a59fc01b51c7129";
 // extra apiKey
 // const API_KEY = "apikey=211c085f78942d7b553a3e154be3772e";
 
-export const getComics = async (offset = 10005) => {
+export const getComics = async (offset = 10006) => {
   return await fetch(`${BASE_URL}?limit=91&offset=${offset}&${API_KEY}`)
     .then((res) => res.json())
     .then((res) => res.data.results.map(normalizeComics));

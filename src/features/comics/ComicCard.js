@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import ComicInfo from "./ComicInfo";
 import "./ComicCard.scss";
 
-const ComicCard = (comic) => {
-  const { id, thumbnail, title, price, format, pageCount, language, year } = comic;
+const ComicCard = ({ comic }) => {
+  const { id, thumbnail, title } = comic;
 
   return (
     <li className="comics__card comic">
@@ -18,14 +18,7 @@ const ComicCard = (comic) => {
         </Link>
       </div>
 
-      <ComicInfo
-        comic={comic}
-        // price={price}
-        // format={format}
-        // pageCount={pageCount}
-        // language={language}
-        // year={year}
-      />
+      <ComicInfo comic={comic} />
     </li>
   );
 };

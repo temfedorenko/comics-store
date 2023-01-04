@@ -54,7 +54,7 @@ const ComicsList = () => {
   const sortedComics = sortComics();
 
   const renderedComics = sortedComics.map((comic) => {
-    return <ComicCard key={comic.id} {...comic} />;
+    return <ComicCard key={comic.id} comic={comic} />;
   });
 
   const errorMessage = status === "error" ? <ErrorMessage /> : null;
@@ -67,8 +67,8 @@ const ComicsList = () => {
       {status === "idle" && (
         <section className="comics">
           <Breadcrumbs firstPath={"Comics"} />
-          <h1 className="comics__title">Comics</h1>
-          <p className="comics__counter">{comics.length} items</p>
+          <h1 className="section-title">Comics</h1>
+          <p className="section-counter">{comics.length} items</p>
           <ComicsSortingSelect filter={sortBy} onFilterSelect={handleSortBySelect} />
           <ComicsFilters />
           <ul className="comics__cards">{renderedComics}</ul>

@@ -1,0 +1,21 @@
+@import "../../styles/variables.scss";
+
+.go-back-btn {
+  margin-top: 41px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  color: $secondary;
+  border: none;
+  cursor: pointer;
+
+  svg {
+    transform: rotate(90deg);
+
+    path {
+      fill: $primary-color;
+    }
+  }
+}

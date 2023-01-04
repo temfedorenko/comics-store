@@ -15,7 +15,7 @@ const CardsSlider = ({ type, title, comics }) => {
   const renderedSlides = comics.map((comic) => {
     return (
       <SwiperSlide key={comic.id}>
-        <ComicCard {...comic} />
+        <ComicCard comic={comic} />
       </SwiperSlide>
     );
   });

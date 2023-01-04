@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 import "./styles/App.scss";
 import Header from "./components/header/Header";
@@ -14,7 +14,7 @@ import SelectedComicPage from "./features/selectedComic/SelectedComicPage";
 
 function App() {
   return (
-    <Router>
+    <HashRouter>
       <div className="App">
         <Header />
         <main className="main">
@@ -31,7 +31,7 @@ function App() {
         </main>
         <Footer />
       </div>
-    </Router>
+    </HashRouter>
   );
 }
 

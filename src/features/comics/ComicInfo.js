@@ -13,7 +13,7 @@ import { ReactComponent as FillHeartIcon } from "../../assets/icons/favorites-fi
 import "./ComicInfo.scss";
 
 const ComicInfo = ({ comic }) => {
-  const { price, format, pageCount, language, year } = comic;
+  const { id, price, format, pageCount, language, year } = comic;
   const dispatch = useDispatch();
 
   const favorites = useSelector(favoritesSelector);
@@ -48,13 +48,14 @@ const ComicInfo = ({ comic }) => {
         {isAddedToCart ? (
           <button
             className="comic__info-button button add-button button_added"
-            onClick={() => dispatch(removeFromCart(comic.id))}>
+            onClick={() => dispatch(removeFromCart(id))}>
             Added to cart
           </button>
         ) : (
           <button
             className="comic__info-button button add-button"
-            onClick={() => dispatch(addToCart(comic))}>
+            onClick={() => dispatch(addToCart(comic))}
+            disabled={!price}>
             Add to cart
           </button>
         )}
@@ -62,7 +63,7 @@ const ComicInfo = ({ comic }) => {
         {isAddedToFavorites ? (
           <button
             className="comic__info-favorite-btn"
-            onClick={() => dispatch(removeFromFavorites(comic.id))}>
+            onClick={() => dispatch(removeFromFavorites(id))}>
             <FillHeartIcon />
           </button>
         ) : (

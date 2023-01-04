@@ -14,12 +14,15 @@ const cartSlice = createSlice({
     removeFromCart: (state, action) => {
       state.cart = state.cart.filter((comic) => comic.id !== action.payload);
     },
+    setCart: (state, action) => {
+      state.cart = action.payload;
+    },
   },
 });
 
 const { reducer, actions } = cartSlice;
 
-export const { addToCart, removeFromCart } = actions;
+export const { addToCart, removeFromCart, setCart } = actions;
 export default reducer;
 
 export const cartSelector = (state) => state.cart.cart;

@@ -1,13 +1,18 @@
 import { useSelector } from "react-redux";
-import { NavLink, Link, useLocation } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 import logo from "../../assets/logo-black.png";
+import { cartSelector } from "../../features/cart/cartSlice";
 import { favoritesSelector } from "../../features/favorites/favoritesSlice";
 import SearchPanel from "../searchPanel/SearchPanel";
 import "./Header.scss";
 
 const Header = () => {
   const favorites = useSelector(favoritesSelector);
+  const cart = useSelector(cartSelector);
+
+  const favoritesCounter = favorites.length;
+  const cartCounter = cart.length;
 
   return (
     <header className="header">
@@ -52,10 +57,16 @@ const Header = () => {
           <SearchPanel />
           <div className="header__icons">
             <Link to="/favorites" className="header__icons-item">
-              <span className="header__icon header__icon-favorites"></span>
+              <span className="header__icon header__icon-favorites">
+                {favoritesCounter > 0 && (
+                  <div className="header__icon-counter">{favoritesCounter}</div>
+                )}
+              </span>
             </Link>
             <Link to="/cart" className="header__icons-item">
-              <span className="header__icon header__icon-store"></span>
+              <span className="header__icon header__icon-store">
+                {cartCounter > 0 && <div className="header__icon-counter">{cartCounter}</div>}
+              </span>
             </Link>
           </div>
         </div>

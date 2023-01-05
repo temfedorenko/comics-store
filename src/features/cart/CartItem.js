@@ -1,26 +1,36 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import cn from "classnames";
+
 import { ReactComponent as DeleteIcon } from "../../assets/icons/close.svg";
-import { removeFromCart } from "./cartSlice";
+import { removeFromCart, addToCart, setCart, cartSelector } from "./cartSlice";
 
 import "./CartItem.scss";
-import { useState } from "react";
 
-const CartItem = ({ changeAmount, changeQuantity, comic: { id, thumbnail, title, price } }) => {
+const CartItem = ({ comic }) => {
+  const { id, thumbnail, title, price } = comic;
   const dispatch = useDispatch();
+  const cart = useSelector(cartSelector);
 
-  const [counter, setCounter] = useState(1);
+  const [itemCounter, setItemCounter] = useState(1);
 
-  const incCounter = () => {
-    setCounter((counter) => counter + 1);
-    changeAmount(price);
-    changeQuantity(1);
+  useEffect(() => {
+    setItemCounter(cart.filter((item) => item.id === id).length);
+  }, [cart]);
+
+  const removeOneComic = () => {
+    if (itemCounter === 1) {
+      return;
+    }
+    const indexToRemove = cart.lastIndexOf(comic);
+    const newCart = [...cart];
+    newCart.splice(indexToRemove, 1);
+    dispatch(setCart(newCart));
   };
-  const decCounter = () => {
-    if (counter < 2) return;
 
-    setCounter((counter) => counter - 1);
-    changeAmount(-price);
-    changeQuantity(-1);
+  const addOneComic = () => {
+    dispatch(addToCart(comic));
   };
 
   return (
@@ -29,16 +39,26 @@ const CartItem = ({ changeAmount, changeQuantity, comic: { id, thumbnail, title,
         <div className="cart__item-delete" onClick={() => dispatch(removeFromCart(id))}>
           <DeleteIcon />
         </div>
-        <img className="cart__item-img" src={thumbnail} alt={title} />
-        <h2 className="cart__item-title">{title}</h2>
+        <Link to={`/comics/${id}`}>
+          <img className="cart__item-img" src={thumbnail} alt={title} />
+        </Link>
+        <Link to={`/comics/${id}`}>
+          <h2 className="cart__item-title">{title}</h2>
+        </Link>
       </div>
       <div className="cart__item-action">
         <div className="cart__item-counter">
-          <div className="cart__item-counter-btn btn-dec" onClick={decCounter}>
+          <div
+            className={cn({
+              "cart__item-counter-btn": true,
+              "btn-dec": true,
+              "btn-disabled": itemCounter === 1,
+            })}
+            onClick={removeOneComic}>
             –
           </div>
-          <span className="cart__item-counter-digit">{counter}</span>
-          <div className="cart__item-counter-btn btn-inc" onClick={incCounter}>
+          <div className="cart__item-counter-digit">{itemCounter}</div>
+          <div className="cart__item-counter-btn btn-inc" onClick={addOneComic}>
             +
           </div>
         </div>

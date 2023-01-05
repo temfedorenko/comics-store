@@ -1,16 +1,24 @@
-import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 import { ReactComponent as SearchIcon } from "../../assets/icons/search.svg";
 import { ReactComponent as CleareIcon } from "../../assets/icons/close.svg";
+import { searchQueryChanged } from "../../features/comics/comicsSlice";
 import "./SeacrhPanel.scss";
-import { useLocation } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const SearchPanel = () => {
-  const [searchQuery, setSearchQuery] = useState("");
+  const [query, setQuery] = useState("");
+  const dispatch = useDispatch();
 
   const onClearBtnClick = () => {
-    setSearchQuery("");
+    setQuery("");
+    dispatch(searchQueryChanged(""));
+  };
+
+  const onInputChange = (e) => {
+    setQuery(e.target.value);
+    dispatch(searchQueryChanged(e.target.value));
   };
 
   const location = useLocation();
@@ -19,16 +27,18 @@ const SearchPanel = () => {
   return (
     panelVisibility && (
       <div className="header__search">
-        <input
-          type="text"
-          className="header__search-input"
-          placeholder={`Search in ${location.pathname.slice(1)}...`}
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-        />
+        <form action="#" onSubmit={(e) => e.preventDefault()}>
+          <input
+            type="text"
+            className="header__search-input"
+            placeholder={`Search in ${location.pathname.slice(1)}...`}
+            value={query}
+            onChange={(e) => onInputChange(e)}
+          />
+        </form>
         <div className="header__search-bg"></div>
         <div className="header__search-icon">
-          {searchQuery ? <CleareIcon onClick={onClearBtnClick} /> : <SearchIcon />}
+          {query ? <CleareIcon onClick={onClearBtnClick} /> : <SearchIcon />}
         </div>
       </div>
     )

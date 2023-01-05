@@ -14,6 +14,12 @@ const Header = () => {
   const favoritesCounter = favorites.length;
   const cartCounter = cart.length;
 
+  const menuLinkClasses = ({ isActive }) =>
+    ["menu__link", isActive ? "menu__link active-link" : null].join(" ");
+
+  const menuIconClasses = ({ isActive }) =>
+    ["header__icons-item", isActive ? "header__icons-item active-link" : null].join(" ");
+
   return (
     <header className="header">
       <div className="header__wrapper">
@@ -25,29 +31,17 @@ const Header = () => {
           </div>
           <ul className="menu__list">
             <li className="menu__item">
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  ["menu__link", isActive ? "menu__link active-link" : null].join(" ")
-                }>
+              <NavLink to="/" className={menuLinkClasses}>
                 home
               </NavLink>
             </li>
             <li className="menu__item">
-              <NavLink
-                to="comics"
-                className={({ isActive }) =>
-                  ["menu__link", isActive ? "menu__link active-link" : null].join(" ")
-                }>
+              <NavLink to="comics" className={menuLinkClasses}>
                 comics
               </NavLink>
             </li>
             <li className="menu__item">
-              <NavLink
-                to="heroes"
-                className={({ isActive }) =>
-                  ["menu__link", isActive ? "menu__link active-link" : null].join(" ")
-                }>
+              <NavLink to="heroes" className={menuLinkClasses}>
                 heroes
               </NavLink>
             </li>
@@ -56,18 +50,18 @@ const Header = () => {
         <div className="header__actions">
           <SearchPanel />
           <div className="header__icons">
-            <Link to="/favorites" className="header__icons-item">
+            <NavLink to="/favorites" className={menuIconClasses}>
               <span className="header__icon header__icon-favorites">
                 {favoritesCounter > 0 && (
                   <div className="header__icon-counter">{favoritesCounter}</div>
                 )}
               </span>
-            </Link>
-            <Link to="/cart" className="header__icons-item">
+            </NavLink>
+            <NavLink to="/cart" className={menuIconClasses}>
               <span className="header__icon header__icon-store">
                 {cartCounter > 0 && <div className="header__icon-counter">{cartCounter}</div>}
               </span>
-            </Link>
+            </NavLink>
           </div>
         </div>
       </div>

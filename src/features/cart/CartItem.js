@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import cn from "classnames";
 
 import { ReactComponent as DeleteIcon } from "../../assets/icons/close.svg";
-import { removeFromCart, addToCart, setCart, cartSelector } from "./cartSlice";
+import { itemAdded, itemRemoved, cartUpdated, cartSelector } from "./cartSlice";
 
 import "./CartItem.scss";
 
@@ -26,17 +26,17 @@ const CartItem = ({ comic }) => {
     const indexToRemove = cart.lastIndexOf(comic);
     const newCart = [...cart];
     newCart.splice(indexToRemove, 1);
-    dispatch(setCart(newCart));
+    dispatch(cartUpdated(newCart));
   };
 
   const addOneComic = () => {
-    dispatch(addToCart(comic));
+    dispatch(itemAdded(comic));
   };
 
   return (
     <li className="cart__item">
       <div className="cart__item-info">
-        <div className="cart__item-delete" onClick={() => dispatch(removeFromCart(id))}>
+        <div className="cart__item-delete" onClick={() => dispatch(itemRemoved(id))}>
           <DeleteIcon />
         </div>
         <Link to={`/comics/${id}`}>

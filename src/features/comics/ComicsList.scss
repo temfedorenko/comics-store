@@ -9,4 +9,10 @@
     row-gap: 40px;
     column-gap: 16px;
   }
+
+  &__empty {
+    margin-top: 30px;
+    font-size: 30px;
+    color: $red;
+  }
 }

@@ -1,11 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addToFavorites,
-  favoritesSelector,
-  removeFromFavorites,
-} from "../favorites/favoritesSlice";
+import { favoriteAdded, favoritesSelector, favoriteRemoved } from "../favorites/favoritesSlice";
 
-import { addToCart, removeFromCart, cartSelector } from "../cart/cartSlice";
+import { itemAdded, itemRemoved, cartSelector } from "../cart/cartSlice";
 
 import { ReactComponent as EmptyHeartIcon } from "../../assets/icons/favorites-empty.svg";
 import { ReactComponent as FillHeartIcon } from "../../assets/icons/favorites-fill.svg";
@@ -48,13 +44,13 @@ const ComicInfo = ({ comic }) => {
         {isAddedToCart ? (
           <button
             className="comic__info-button button add-button button_added"
-            onClick={() => dispatch(removeFromCart(id))}>
+            onClick={() => dispatch(itemRemoved(id))}>
             Added to cart
           </button>
         ) : (
           <button
             className="comic__info-button button add-button"
-            onClick={() => dispatch(addToCart(comic))}
+            onClick={() => dispatch(itemAdded(comic))}
             disabled={!price}>
             Add to cart
           </button>
@@ -63,13 +59,13 @@ const ComicInfo = ({ comic }) => {
         {isAddedToFavorites ? (
           <button
             className="comic__info-favorite-btn"
-            onClick={() => dispatch(removeFromFavorites(id))}>
+            onClick={() => dispatch(favoriteRemoved(id))}>
             <FillHeartIcon />
           </button>
         ) : (
           <button
             className="comic__info-favorite-btn"
-            onClick={() => dispatch(addToFavorites(comic))}>
+            onClick={() => dispatch(favoriteAdded(comic))}>
             <EmptyHeartIcon />
           </button>
         )}

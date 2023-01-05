@@ -13,6 +13,7 @@ import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
 const ComicsList = () => {
   const comics = useSelector(comicsSelector);
   const status = useSelector((state) => state.comics.status);
+  const searchQuery = useSelector((state) => state.comics.searchQuery);
   const dispatch = useDispatch();
 
   const [sortBy, setSortBy] = useState("");
@@ -51,7 +52,17 @@ const ComicsList = () => {
     }
   };
 
-  const sortedComics = sortComics();
+  const searchComics = (items) => {
+    if (!searchQuery) {
+      return items;
+    }
+
+    return items.filter((item) => {
+      return item.title.toLowerCase().includes(searchQuery.toLowerCase());
+    });
+  };
+
+  const sortedComics = searchComics(sortComics());
 
   const renderedComics = sortedComics.map((comic) => {
     return <ComicCard key={comic.id} comic={comic} />;
@@ -68,11 +79,14 @@ const ComicsList = () => {
         <section className="comics">
           <Breadcrumbs firstPath={"Comics"} />
           <h1 className="section-title">Comics</h1>
-          <p className="section-counter">{comics.length} items</p>
+          <p className="section-counter">{sortedComics.length} items</p>
           <ComicsSortingSelect filter={sortBy} onFilterSelect={handleSortBySelect} />
           <ComicsFilters />
           <ul className="comics__cards">{renderedComics}</ul>
         </section>
+      )}
+      {status === "idle" && sortedComics.length === 0 && (
+        <p className="comics__empty"> There are no comics on your request. Please, try again 🦸‍♀️</p>
       )}
     </>
   );

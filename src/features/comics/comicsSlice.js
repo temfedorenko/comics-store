@@ -5,6 +5,7 @@ const initialState = {
   comics: [],
   status: "idle",
   filter: "All",
+  searchQuery: "",
 };
 
 export const fetchComics = createAsyncThunk("comics/fetchComics", async () => {
@@ -17,6 +18,9 @@ const comicsSlice = createSlice({
   reducers: {
     filterChanged: (state, action) => {
       state.filter = action.payload;
+    },
+    searchQueryChanged: (state, action) => {
+      state.searchQuery = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -37,7 +41,7 @@ const comicsSlice = createSlice({
 
 const { reducer, actions } = comicsSlice;
 
-export const { filterChanged } = actions;
+export const { filterChanged, searchQueryChanged } = actions;
 
 export default reducer;
 

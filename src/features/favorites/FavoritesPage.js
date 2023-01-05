@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
 import FavoriteList from "./FavoritesList";
-import { favoritesSelector, setFavorites } from "./favoritesSlice";
+import { favoritesSelector, favoritesUpdated } from "./favoritesSlice";
 
 import "./FavoritesPage.scss";
+import { Link } from "react-router-dom";
 
 const FavoritesPage = () => {
   const favorites = useSelector(favoritesSelector);
@@ -12,12 +13,17 @@ const FavoritesPage = () => {
 
   const infoContent =
     favorites.length === 0 ? (
-      <h2 className="section-info">Please choose your favorites comics</h2>
+      <div className="section-info">
+        <h2>Please, choose your favorites comics</h2>
+        <Link to="/comics" className="hero-emoji">
+          🦸‍♀️
+        </Link>
+      </div>
     ) : (
       <>
         <p className="section-counter">{favorites.length} items</p>
         <button
-          onClick={() => dispatch(setFavorites([]))}
+          onClick={() => dispatch(favoritesUpdated([]))}
           className="comics__filters-btn clear-btn">
           Clear favorites
         </button>

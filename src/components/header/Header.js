@@ -25,7 +25,7 @@ const Header = () => {
       <div className="header__wrapper">
         <nav className="header__menu menu">
           <div className="header__logo">
-            <Link to="#">
+            <Link to="/">
               <img src={logo} width="70" alt="logo" />
             </Link>
           </div>

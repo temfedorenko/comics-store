@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
+import { Navigation, Pagination } from "swiper";
 
 import { ReactComponent as ArrowRightIcon } from "../../assets/icons/arrow-right.svg";
 import firstSlider from "../../assets/images/marvel-comics1.jpg";
@@ -12,6 +12,14 @@ import "swiper/css";
 import "./BannerSlider.scss";
 
 const BannerSlider = () => {
+  const pagination = {
+    clickable: true,
+    el: ".swiper-pagination",
+    renderBullet: () => {
+      return '<span class="swiper-pagination-bullet"></span>';
+    },
+  };
+
   return (
     <div className="banner-slider">
       <div className="swiper__wrapper">
@@ -28,9 +36,26 @@ const BannerSlider = () => {
             disabledClass: "swiper-btn-disabled",
           }}
           speed={500}
-          modules={[Navigation]}
+          modules={[Navigation, Pagination]}
           spaceBetween={50}
-          slidesPerView={1}>
+          slidesPerView={1}
+          pagination={pagination}
+          breakpoints={
+            {
+              // 640: {
+              //   slidesPerView: 2,
+              //   spaceBetween: 20,
+              // },
+              // 768: {
+              //   slidesPerView: 4,
+              //   spaceBetween: 40,
+              // },
+              // 1024: {
+              //   slidesPerView: 5,
+              //   spaceBetween: 50,
+              // },
+            }
+          }>
           <SwiperSlide>
             <img src={firstSlider} alt="comic" />
           </SwiperSlide>
@@ -48,6 +73,7 @@ const BannerSlider = () => {
           </SwiperSlide>
         </Swiper>
       </div>
+      <div className="swiper-pagination"></div>
     </div>
   );
 };

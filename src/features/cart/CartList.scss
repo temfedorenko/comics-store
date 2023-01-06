@@ -1,15 +1,24 @@
 @import "../../styles/variables.scss";
 .cart {
-  margin-top: 24px;
+  padding: 24px 0;
   display: flex;
   justify-content: space-between;
   gap: 16px;
+
+  @media (max-width: 992px) {
+    flex-direction: column;
+    align-items: center;
+  }
 
   &__items {
     display: flex;
     flex-direction: column;
     flex: 1 0;
     gap: 16px;
+
+    @media (max-width: 992px) {
+      order: 2;
+    }
   }
 
   &__checkout {
@@ -23,6 +32,17 @@
     border: 1px solid $icons-color;
     background-color: $background;
 
+    @media (max-width: 992px) {
+      order: 1;
+      padding: 10px;
+      height: 176px;
+    }
+
+    @media (max-width: 576px) {
+      width: 250px;
+      height: 150px;
+    }
+
     &-total {
       display: flex;
       align-items: center;
@@ -33,6 +53,10 @@
     &-amount {
       font-weight: 700;
       font-size: 32px;
+
+      @media (max-width: 576px) {
+        font-size: 22px;
+      }
     }
   }
 }

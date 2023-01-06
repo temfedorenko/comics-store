@@ -58,8 +58,23 @@ const CardsSlider = ({ type, title, comics }) => {
             speed={800}
             modules={[Navigation]}
             spaceBetween={50}
-            slidesPerView={4}
-            slidesPerGroup={4}>
+            slidesPerView={1}
+            slidesPerGroup={1}
+            breakpoints={{
+              768: {
+                slidesPerView: 2,
+                slidesPerGroup: 2,
+              },
+
+              1200: {
+                slidesPerView: 3,
+                slidesPerGroup: 3,
+              },
+              1400: {
+                slidesPerView: 4,
+                slidesPerGroup: 4,
+              },
+            }}>
             {renderedSlides}
           </CardsSwiper>
         </div>

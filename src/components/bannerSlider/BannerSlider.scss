@@ -2,12 +2,19 @@
 
 .banner-slider {
   .swiper {
-    margin-top: 40px;
     max-width: 1140px;
     height: 400px;
 
+    @media (max-width: 768px) {
+      height: 300px;
+    }
+
     &__wrapper {
-      position: relative;
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
     }
 
     &-slide {
@@ -17,17 +24,11 @@
         height: 100%;
         object-fit: cover;
       }
-      &-button-prev {
-        width: 32px;
-        height: 400px;
-        border: 1px solid $icons-color;
-      }
     }
 
     &-btn {
       height: 400px;
       width: 32px;
-      position: absolute;
       border: 1px solid $icons-color;
       display: flex;
       align-items: center;
@@ -35,6 +36,14 @@
       cursor: pointer;
       user-select: none;
       transition: all 0.5s;
+
+      @media (max-width: 768px) {
+        height: 300px;
+      }
+
+      @media (max-width: 576px) {
+        display: none;
+      }
 
       &:hover {
         background-color: $background;
@@ -56,6 +65,7 @@
 
       &-next {
         right: 0;
+        order: 3;
       }
 
       &-disabled {
@@ -63,6 +73,24 @@
         cursor: auto;
         &:hover {
           background-color: transparent;
+        }
+      }
+    }
+
+    &-pagination {
+      margin: 16px auto 0;
+      width: 100px;
+      display: flex;
+      justify-content: space-between;
+      &-bullet {
+        display: block;
+        width: 14px;
+        height: 4px;
+        background-color: $elements;
+        cursor: pointer;
+
+        &-active {
+          background-color: $primary-color;
         }
       }
     }

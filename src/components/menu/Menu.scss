@@ -1,66 +1,53 @@
-@import "../../styles/variables";
+@import "../../styles/variables.scss";
 
-.header {
+.mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 99999;
+  width: 100%;
+  height: 100vh;
+  padding: 11px 20px 120px;
   background-color: $white;
 
-  &__wrapper {
-    padding-left: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0px 1px 0px #e2e6e9;
-  }
-
   &__logo {
-    width: 70px;
-    margin-right: 64px;
-
-    img {
-      width: 100%;
-    }
+    align-self: start;
   }
 
+  .header__search {
+    box-shadow: none;
+    border: 1px solid $elements;
+  }
   .menu {
-    display: flex;
-    align-items: center;
-
+    flex-grow: 1;
     &__list {
+      margin-top: 30px;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 54px;
-
-      @media (max-width: 992px) {
-        display: none;
-      }
     }
 
     &__link {
+      padding: 25px;
       display: flex;
       align-items: center;
-      height: 80px;
       font-weight: 700;
-      letter-spacing: 3px;
+      font-size: 18px;
+      letter-spacing: 5px;
       text-transform: uppercase;
       color: $secondary;
       transition: color 0.4s ease-in-out;
-
-      &:hover {
-        transform: translateY(2px);
-        border-bottom: 3px solid $primary-color;
-      }
-    }
-  }
-
-  &__actions {
-    display: flex;
-
-    @media (max-width: 992px) {
-      display: none;
     }
   }
 
   &__icons {
     display: flex;
+    justify-content: space-between;
+    gap: 60px;
 
     &-item {
       display: flex;
@@ -68,19 +55,14 @@
       justify-content: center;
       width: 80px;
       height: 80px;
-      box-shadow: -1px 0px 0px #e2e6e9;
-
-      &:hover {
-        color: $primary-color;
-        border-bottom: 3px solid $primary-color;
-      }
+      border: 1px solid $elements;
     }
   }
   &__icon {
     position: relative;
     display: block;
-    width: 22px;
-    height: 22px;
+    width: 35px;
+    height: 35px;
 
     &-favorites {
       background: url("../../assets/icons/favorites-empty.svg") center/contain no-repeat;
@@ -109,8 +91,16 @@
   }
 
   .active-link {
-    transform: translateY(2px);
+    transform: translateY(3px);
     color: $primary-color;
     border-bottom: 3px solid $primary-color;
+  }
+
+  .menu-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px solid $elements;
+    box-shadow: none;
   }
 }

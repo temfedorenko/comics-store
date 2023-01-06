@@ -13,13 +13,15 @@ const Breadcrumbs = ({ firstPath, secondPath }) => {
 
       {secondPath ? (
         <>
-          <Link to={`/${firstPath.toLowerCase()}`}>{firstPath}</Link>
+          <Link to={`/${firstPath.toLowerCase()}`} className="breadcrumbs__link">
+            {firstPath}
+          </Link>
           <img className="breadcrumbs__arrow" src={arrowRightIcon} alt="arrow" />
         </>
       ) : (
-        <span>{firstPath}</span>
+        <span className="breadcrumbs__path">{firstPath}</span>
       )}
-      {secondPath && <span>{`${secondPath.slice(0, 40)}...`}</span>}
+      {secondPath && <span className="breadcrumbs__path">{`${secondPath.slice(0, 40)}...`}</span>}
     </div>
   );
 };

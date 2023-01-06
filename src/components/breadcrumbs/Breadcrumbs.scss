@@ -13,7 +13,14 @@
     height: 12px;
   }
 
-  span {
+  &__path {
     color: $secondary;
+  }
+
+  &__link,
+  &__path {
+    @media (max-width: 576px) {
+      font-size: 11px;
+    }
   }
 }

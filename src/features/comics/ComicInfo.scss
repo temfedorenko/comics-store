@@ -42,6 +42,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 8px;
     }
 
     &-favorite-btn {
@@ -71,6 +72,7 @@
 }
 
 .button {
+  flex-grow: 1;
   width: 176px;
   height: 40px;
   background: $primary-color;

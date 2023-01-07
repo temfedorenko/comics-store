@@ -10,6 +10,17 @@
     column-gap: 16px;
   }
 
+  .header__search {
+    display: none;
+    width: 100%;
+    margin-top: 16px;
+    border: 1px solid $secondary;
+
+    @media (max-width: 992px) {
+      display: flex;
+    }
+  }
+
   &__empty {
     margin-top: 30px;
     font-size: 30px;

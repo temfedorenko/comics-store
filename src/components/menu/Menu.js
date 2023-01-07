@@ -1,16 +1,15 @@
-import { useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
+import classNames from "classnames";
 
 import logo from "../../assets/logo-black.png";
 import { cartSelector } from "../../features/cart/cartSlice";
 import { favoritesSelector } from "../../features/favorites/favoritesSlice";
 import MenuButton from "./MenuButton";
-import SearchPanel from "../searchPanel/SearchPanel";
 
 import "./Menu.scss";
 
-const Menu = ({ closeMenu }) => {
+const Menu = ({ isOpen, closeMenu }) => {
   const favorites = useSelector(favoritesSelector);
   const cart = useSelector(cartSelector);
 
@@ -24,7 +23,7 @@ const Menu = ({ closeMenu }) => {
     ["mobile__icons-item", isActive ? "mobile__icons-item active-link" : null].join(" ");
 
   return (
-    <div className="mobile" onClick={closeMenu}>
+    <div className={classNames({ mobile: true, active: isOpen })} onClick={closeMenu}>
       <div className="mobile__logo">
         <Link to="/">
           <img src={logo} width="70" alt="logo" />

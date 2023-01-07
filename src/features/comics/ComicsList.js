@@ -9,6 +9,7 @@ import Spinner from "../../components/spinner/Spinner";
 import ErrorMessage from "../../components/errorMessage/ErrorMessage";
 import ComicsSortingSelect from "./ComicsSortingSelect";
 import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
+import SearchPanel from "../../components/searchPanel/SearchPanel";
 
 const ComicsList = () => {
   const comics = useSelector(comicsSelector);
@@ -82,6 +83,7 @@ const ComicsList = () => {
           <p className="section-counter">{sortedComics.length} items</p>
           <ComicsSortingSelect filter={sortBy} onFilterSelect={handleSortBySelect} />
           <ComicsFilters />
+          <SearchPanel />
           <ul className="comics__cards">{renderedComics}</ul>
         </section>
       )}

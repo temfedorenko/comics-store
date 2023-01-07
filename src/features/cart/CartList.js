@@ -10,8 +10,6 @@ const CartList = () => {
   const cart = useSelector(cartSelector);
 
   const uniqueCart = [...new Map(cart.map((item) => [item["id"], item])).values()];
-  const amount = cart.reduce((sum, item) => sum + item.price, 0).toFixed(2);
-  const total = `Total for ${cart.length} ${cart.length === 1 ? "item" : "items"}`;
 
   const renderedCart = uniqueCart.map((comic) => (
     <CSSTransition key={comic.id} timeout={600} classNames="item">
@@ -20,18 +18,9 @@ const CartList = () => {
   ));
 
   return (
-    <div className="cart">
-      <TransitionGroup component="ul" className="cart__items">
-        {renderedCart}
-      </TransitionGroup>
-      <div className="cart__checkout">
-        <div className="cart__checkout-total">
-          <span className="cart__checkout-amount">${amount}</span>
-          <span className="cart__checkout-quantity">{total}</span>
-        </div>
-        <button className="cart__checkout-btn button">Checkout</button>
-      </div>
-    </div>
+    <TransitionGroup component="ul" className="cart__items">
+      {renderedCart}
+    </TransitionGroup>
   );
 };
 

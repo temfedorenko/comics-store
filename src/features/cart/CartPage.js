@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+
 import GoBackButton from "../../components/goBackButton/GoBackButton";
 import CartList from "./CartList";
+import CartCheckout from "./CartCheckout";
 import { cartSelector } from "./cartSlice";
 
 const CartPage = () => {
@@ -16,7 +18,10 @@ const CartPage = () => {
         </Link>
       </div>
     ) : (
-      <CartList />
+      <div className="cart">
+        <CartList />
+        <CartCheckout />
+      </div>
     );
   return (
     <section>

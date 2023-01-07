@@ -40,7 +40,6 @@ const Header = () => {
   return (
     <>
       <Menu closeMenu={closeMenu} isOpen={isMenuOpen} />
-      {/* {isMenuOpen && <Menu closeMenu={closeMenu} />} */}
       <header className="header">
         <div className="header__wrapper">
           <nav className="header__menu menu">

@@ -1,0 +1,21 @@
+@import "../../styles/variables.scss";
+
+.not-found {
+  margin-top: 40px;
+  text-align: center;
+
+  &__title {
+    font-size: 120px;
+    color: $red;
+  }
+
+  &__link {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 30px;
+    transition: all 0.5s;
+    &:hover {
+      color: $red;
+    }
+  }
+}

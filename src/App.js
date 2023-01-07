@@ -12,6 +12,7 @@ import HomePage from "./components/pages/HomePage";
 import SelectedComicPage from "./features/selectedComic/SelectedComicPage";
 import FavoritesPage from "./features/favorites/FavoritesPage";
 import CartPage from "./features/cart/CartPage";
+import PageNotFound from "./components/pages/PageNotFound";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="/heroes" element={<HeroesPage />} />
             <Route path="/favorites" element={<FavoritesPage />} />
             <Route path="/cart" element={<CartPage />} />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </main>
         <Footer />

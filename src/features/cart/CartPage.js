@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import GoBackButton from "../../components/goBackButton/GoBackButton";
 import CartList from "./CartList";
@@ -24,11 +25,17 @@ const CartPage = () => {
       </div>
     );
   return (
-    <section>
-      <GoBackButton />
-      <h1 className="section-title">Cart</h1>
-      {сontent}
-    </section>
+    <>
+      <Helmet>
+        <meta name="description" content="Marvel comics store cart" />
+        <title>Cart - Comics Store</title>
+      </Helmet>
+      <section>
+        <GoBackButton />
+        <h1 className="section-title">Cart</h1>
+        {сontent}
+      </section>
+    </>
   );
 };
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Helmet } from "react-helmet";
 
 import { fetchComics, comicsSelector } from "./comicsSlice";
 import "./ComicsList.scss";
@@ -70,6 +71,10 @@ const ComicsPage = () => {
 
   return (
     <>
+      <Helmet>
+        <meta name="description" content="List of marvel comics" />
+        <title>Comics - Comics Store</title>
+      </Helmet>
       {errorMessage}
       {spinner}
       {status === "idle" && (

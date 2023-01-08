@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -21,6 +22,10 @@ const HomePage = () => {
   }, []);
   return (
     <>
+      <Helmet>
+        <meta name="description" content="Marvel comics store" />
+        <title>Comics Store</title>
+      </Helmet>
       <section>
         <BannerSlider />
       </section>

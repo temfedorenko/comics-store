@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
+import Helmet from "react-helmet";
+import { Link } from "react-router-dom";
+
 import Breadcrumbs from "../../components/breadcrumbs/Breadcrumbs";
 import FavoriteList from "./FavoritesList";
 import { favoritesSelector, favoritesUpdated } from "./favoritesSlice";
 
 import "./FavoritesPage.scss";
-import { Link } from "react-router-dom";
 
 const FavoritesPage = () => {
   const favorites = useSelector(favoritesSelector);
@@ -30,12 +32,18 @@ const FavoritesPage = () => {
       </>
     );
   return (
-    <section>
-      <Breadcrumbs firstPath={"Favorites"} />
-      <h1 className="section-title">Favorites</h1>
-      {infoContent}
-      <FavoriteList />
-    </section>
+    <>
+      <Helmet>
+        <meta name="description" content="List of favorites marvel comics" />
+        <title>Favorites - Comics Store</title>
+      </Helmet>
+      <section>
+        <Breadcrumbs firstPath={"Favorites"} />
+        <h1 className="section-title">Favorites</h1>
+        {infoContent}
+        <FavoriteList />
+      </section>
+    </>
   );
 };
 

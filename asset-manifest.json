@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/comics-store/static/css/main.1526c826.css",
+    "main.js": "/comics-store/static/js/main.5a81be2d.js",
+    "static/media/marvel-comics3.jpg": "/comics-store/static/media/marvel-comics3.a4d7ef423e5cb3aa174e.jpg",
+    "static/media/marvel-comics2.jpg": "/comics-store/static/media/marvel-comics2.c8f605c4984e888f0306.jpg",
+    "static/media/marvel-comics4.jpg": "/comics-store/static/media/marvel-comics4.e33f105ea8e1eabcb5bd.jpg",
+    "static/media/marvel-comics1.jpg": "/comics-store/static/media/marvel-comics1.414adab249d5d74ac4b7.jpg",
+    "static/media/marvel-comics5.jpg": "/comics-store/static/media/marvel-comics5.47c2f7b7541fbcab38a9.jpg",
+    "static/media/error.gif": "/comics-store/static/media/error.065563db390018d1e7aa.gif",
+    "static/media/spinner.gif": "/comics-store/static/media/spinner.c04a3e3e6f581cdf1bee.gif",
+    "static/media/logo-black.png": "/comics-store/static/media/logo-black.4a9ed9a6898336e1533f.png",
+    "static/media/icons8-github.svg": "/comics-store/static/media/icons8-github.be55d10a8336a438da962614f0570449.svg",
+    "static/media/icons8-linkedin.svg": "/comics-store/static/media/icons8-linkedin.228668a55ccc1021de55cbf2aa79cc5c.svg",
+    "static/media/favorites-empty.svg": "/comics-store/static/media/favorites-empty.aa0749f92b1de7522b54d6bb583c5269.svg",
+    "static/media/basket-empty.svg": "/comics-store/static/media/basket-empty.f73bd35d4faf6cb6a195.svg",
+    "static/media/home.svg": "/comics-store/static/media/home.e54109e9315901bfde2038b08c88c36a.svg",
+    "static/media/search.svg": "/comics-store/static/media/search.921cb9f7d11380485cbd7716f7ab4d42.svg",
+    "static/media/favorites-fill.svg": "/comics-store/static/media/favorites-fill.52bfb4443fb4b2d2bd550113f93946f6.svg",
+    "index.html": "/comics-store/index.html",
+    "static/media/close.svg": "/comics-store/static/media/close.a5ded6eb320b4d93784fceade81fe333.svg",
+    "static/media/arrow-right.svg": "/comics-store/static/media/arrow-right.16bd3a3b4c4f4adb3fa295365db8f9e0.svg",
+    "static/media/arrow-down.svg": "/comics-store/static/media/arrow-down.6559e1334e35719e0defd46349957fbd.svg",
+    "main.1526c826.css.map": "/comics-store/static/css/main.1526c826.css.map",
+    "main.5a81be2d.js.map": "/comics-store/static/js/main.5a81be2d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1526c826.css",
+    "static/js/main.5a81be2d.js"
+  ]
+}

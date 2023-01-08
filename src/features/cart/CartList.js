@@ -5,11 +5,16 @@ import { cartSelector } from "./cartSlice";
 import CartItem from "./CartItem";
 
 import "./CartList.scss";
+import { useEffect } from "react";
 
 const CartList = () => {
   const cart = useSelector(cartSelector);
 
   const uniqueCart = [...new Map(cart.map((item) => [item["id"], item])).values()];
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [uniqueCart]);
 
   const renderedCart = uniqueCart.map((comic) => (
     <CSSTransition key={comic.id} timeout={600} classNames="item">

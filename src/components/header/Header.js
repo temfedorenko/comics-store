@@ -1,16 +1,29 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
 
 import logo from "../../assets/logo-black.png";
-import { cartSelector } from "../../features/cart/cartSlice";
-import { favoritesSelector } from "../../features/favorites/favoritesSlice";
+import { cartSelector, cartUpdated } from "../../features/cart/cartSlice";
+import { favoritesSelector, favoritesUpdated } from "../../features/favorites/favoritesSlice";
 import MenuButton from "../menu/MenuButton";
 import SearchPanel from "../searchPanel/SearchPanel";
 import Menu from "../menu/Menu";
 import "./Header.scss";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const getDataFromLocalStorage = (data, dataUpdated) => {
+    if (localStorage.getItem(data)) {
+      dispatch(dataUpdated(JSON.parse(localStorage.getItem(data))));
+    }
+  };
+
+  useEffect(() => {
+    getDataFromLocalStorage("favorites", favoritesUpdated);
+    getDataFromLocalStorage("cart", cartUpdated);
+  }, []);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const favorites = useSelector(favoritesSelector);

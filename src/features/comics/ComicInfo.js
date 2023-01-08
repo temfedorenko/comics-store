@@ -1,6 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import { favoriteAdded, favoritesSelector, favoriteRemoved } from "../favorites/favoritesSlice";
+import { useEffect } from "react";
 
+import {
+  favoriteAdded,
+  favoritesSelector,
+  favoriteRemoved,
+  favoritesUpdated,
+} from "../favorites/favoritesSlice";
 import { itemAdded, itemRemoved, cartSelector } from "../cart/cartSlice";
 
 import { ReactComponent as EmptyHeartIcon } from "../../assets/icons/favorites-empty.svg";
@@ -15,8 +21,16 @@ const ComicInfo = ({ comic }) => {
   const favorites = useSelector(favoritesSelector);
   const isAddedToFavorites = favorites.find((favComic) => favComic.id === comic.id);
 
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
+
   const cart = useSelector(cartSelector);
   const isAddedToCart = cart.find((item) => item.id === comic.id);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <div className="comic__info">

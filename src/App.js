@@ -3,9 +3,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 
 import "./styles/App.scss";
 import Header from "./components/header/Header";
-import ComicsList from "./features/comics/ComicsList";
 import Footer from "./components/footer/Footer";
-import AboutPage from "./components/pages/AboutPage";
 import ContactsPage from "./components/pages/ContactsPage";
 import HeroesPage from "./components/pages/HeroesPage";
 import HomePage from "./components/pages/HomePage";
@@ -27,7 +25,6 @@ function App() {
               <Route index element={<ComicsPage />} />
               <Route path=":comicId" element={<SelectedComicPage />} />
             </Route>
-            <Route path="/about" element={<AboutPage />} />
             <Route path="/contacts" element={<ContactsPage />} />
             <Route path="/heroes" element={<HeroesPage />} />
             <Route path="/favorites" element={<FavoritesPage />} />

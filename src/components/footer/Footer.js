@@ -32,11 +32,6 @@ const Footer = () => {
                 contacts
               </Link>
             </li>
-            <li className="menu__item">
-              <Link to="/about" className="menu__link">
-                about
-              </Link>
-            </li>
           </ul>
         </nav>
         <div className="footer__to-top" onClick={scrollUp}>

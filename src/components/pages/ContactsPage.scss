@@ -1,0 +1,40 @@
+@import "../../styles/variables.scss";
+
+.contacts {
+  &__content {
+    margin-top: 100px;
+    text-align: center;
+  }
+
+  &__subtitle {
+    span {
+      color: $red;
+    }
+  }
+
+  &__info {
+    margin-top: 16px;
+  }
+
+  &__icons {
+    margin-top: 38px;
+  }
+
+  &__link {
+    svg {
+      transition: all 0.5s ease-in-out;
+      path {
+        transition: all 0.5s ease-in-out;
+      }
+    }
+
+    &:hover {
+      svg {
+        transform: scale(1.1);
+        path {
+          fill: $primary-color;
+        }
+      }
+    }
+  }
+}
